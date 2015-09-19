@@ -1,0 +1,71 @@
+// _typography.scss # Типографские правила
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html {
+    @include breakpoint($smartfon) {
+        $base-font-size: 10px !global;
+        $base-line-height: $base-font-size * $koef !global;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+    }
+    @include breakpoint($tablet) {
+        $base-font-size: 12px !global;
+        $base-line-height: $base-font-size * $koef !global;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+    }
+    @include breakpoint($notebook) {
+        $base-font-size: 14px !global;
+        $base-line-height: $base-font-size * $koef !global;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+    }
+    @include breakpoint($desktop) {
+        $base-font-size: 16px !global;
+        $base-line-height: $base-font-size * $koef !global;
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+    }
+}
+
+h1 {
+    font-size: 5.063rem;
+}
+
+h2 {
+    font-size: 3.375rem;
+}
+
+h3 {
+    font-size: 2.25rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 0.667rem;
+}
+
+h6 {
+    font-size: 0.444rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    font-family: "Roboto Condensed", sans-serif;
+    line-height: 1.5;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+}
+

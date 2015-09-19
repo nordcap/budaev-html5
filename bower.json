@@ -1,0 +1,16 @@
+{
+  "name": "budaev-html5",
+  "version": "1.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "compass-breakpoint": "~2.6.1",
+    "reset-css": "~2.0.2011012602"
+  }
+}
