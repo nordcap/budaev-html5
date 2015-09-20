@@ -210,10 +210,19 @@ gulp.task('default', ['sass','browser-sync','watch']);
 gulp.task('build', function(callback) {
     runSequence('clean',
         'sass', ['images', 'copy', 'fonts', 'jquery'],
-        'html',
+        'html','sourcemaps',
         callback);
 });
 
+//под вопросом. Разобраться как работает
+gulp.task('sourcemaps', function(){
+    gulp.src('./dist/styles/*.css')
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(path.dist.css))
+        .pipe(size({title: 'sourcemaps'}));
+
+});
 
 // Run PageSpeed Insights
 gulp.task('pagespeed', function (cb) {
