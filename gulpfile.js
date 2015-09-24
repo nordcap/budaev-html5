@@ -1,6 +1,6 @@
 "use strict";
 
-
+//var rigger = require('gulp-rigger');//concat html files
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -12,7 +12,6 @@ var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var minifyHTML = require('gulp-minify-html');
-//var rigger = require('gulp-rigger');//concat html files
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var pagespeed = require('psi');
@@ -24,8 +23,10 @@ var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var uncss = require('gulp-uncss');
 var pngquant = require('imagemin-pngquant');
-
-
+/* for use sprites
+var spritesmith = require('gulp.spritesmith');
+var merge = require('merge-stream');
+*/
 
 
 
@@ -214,7 +215,26 @@ gulp.task('build', function(callback) {
         callback);
 });
 
+/*
+//create sprites
+gulp.task('sprite', function () {
+var spriteData = gulp.src('./app/images/icon/*.png')
+  .pipe(spritesmith({
+            imgName: 'sprite.png',
+            imgPath: 'images/sprite.png',
+            cssName: 'sprite.scss' ,
+            algorithm: 'top-down',
+            padding: 10,
+          }));
 
+var imgStream = spriteData.img.pipe(gulp.dest('./app/images/'));
+
+var cssStream = spriteData.css.pipe(gulp.dest('./app/sass/utils/'));
+
+return merge(imgStream, cssStream);
+
+});
+*/
 
 // Run PageSpeed Insights
 gulp.task('pagespeed', function (cb) {
