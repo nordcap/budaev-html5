@@ -23,6 +23,8 @@ var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var uncss = require('gulp-uncss');
 var pngquant = require('imagemin-pngquant');
+var sitemap = require('gulp-sitemap');
+
 /* for use sprites
 var spritesmith = require('gulp.spritesmith');
 var merge = require('merge-stream');
@@ -213,6 +215,17 @@ gulp.task('build', function(callback) {
         'sass', ['images', 'copy', 'fonts', 'jquery'],
         'html',
         callback);
+});
+
+
+//create sitemap 
+gulp.task('sitemap', function(){
+	return gulp.src('./dist/**/*.html')
+			 .pipe(sitemap({
+						siteUrl: 'http://yuorsite.com',
+						priority: '1.0'
+					}))
+			.pipe(gulp.dest(path.dist.html));
 });
 
 /*
