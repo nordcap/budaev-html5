@@ -21,9 +21,9 @@ var jshint = require('gulp-jshint');
 var cache = require('gulp-cache');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
-var uncss = require('gulp-uncss');
 var pngquant = require('imagemin-pngquant');
 var sitemap = require('gulp-sitemap');
+//var concat = require('gulp-concat'); //concat files
 
 /* for use sprites
 var spritesmith = require('gulp.spritesmith');
@@ -36,8 +36,8 @@ var merge = require('merge-stream');
 var path = {
     dist: {
         html: './dist/',
-        js: './dist/scripts/',
-        css: './dist/styles/',
+        js: './dist/js/',
+        css: './dist/css/',
         img: './dist/images/',
         fonts: './dist/fonts/'
 
@@ -45,8 +45,8 @@ var path = {
     },
     app: {
         html: './app/*.html',
-        js: './app/scripts/**/*.js',
-        css: './app/styles/',
+        js: './app/js/**/*.js',
+        css: './app/css/',
         scss: './app/sass/main.scss',
         img: './app/images/**/*.*',
         fonts: './app/fonts/**/*.*'
@@ -54,7 +54,7 @@ var path = {
     },
     watch: {
         html: './app/**/*.html',
-        js: './app/scripts/**/*.js',
+        js: './app/js/**/*.js',
         scss: './app/sass/**/*.scss',
         img: './app/images/**/*.*',
         fonts: './app/fonts/**/*.*'
@@ -89,11 +89,11 @@ gulp.task('jshint', function () {
 gulp.task('images', function() {
     return gulp.src(path.app.img)
         .pipe(plumber())
-        .pipe(cache(imagemin({
-            progressive: true,
-            interlaced: true,
-            use: [pngquant()]
-        })))
+        // .pipe(cache(imagemin({
+        //     progressive: true,
+        //     interlaced: true,
+        //     use: [pngquant()]
+        // })))
         .pipe(gulp.dest(path.dist.img))
         .pipe(size({title: 'images'}));
 });
@@ -108,10 +108,27 @@ gulp.task('fonts', function() {
 
 //copy jquery in dest
 gulp.task('jquery', function(){
-    return gulp.src('./app/scripts/jquery.min.js')
+    return gulp.src('./app/js/jquery.min.js')
         .pipe(gulp.dest(path.dist.js))
         .pipe(size({title: 'jquery'}));
 });
+
+
+//concat js files => error concat&minify in task 'html'
+// gulp.task('concat-js', function() {
+//   return gulp.src([
+//       './app/js/bootstrap.min.js',
+//       './app/js/jquery.easing.min.js',
+//       './app/js/jquery.fittext.js',
+//       './app/js/wow.min.js'
+//   ])
+//     .pipe(concat('all.min.js'))
+//     .pipe(uglify())
+//     .pipe(gulp.dest(path.dist.js))
+//     .pipe(size({title: 'concat-js'}));
+// });
+
+
 
 // Copy all files at the root level (app)
 gulp.task('copy', function(){
@@ -142,11 +159,7 @@ gulp.task('html', function() {
         .pipe(assets)
         // Concatenate and minify JavaScri
         .pipe(gulpif('*.js', uglify()))
-        // Remove any unused CSS
-        .pipe(gulpif('*.css', uncss({
-            html: path.app.html
-        })))
-        // Concatenate and minify styles
+        // Concatenate and minify css
         .pipe(gulpif('*.css', minifyCss()))
         .pipe(assets.restore())
         .pipe(useref())
@@ -173,7 +186,7 @@ gulp.task('bower', function() {
 // Clean output directory
 gulp.task('clean', del.bind(null, ['dist/**'],{dot: true}));
 
-//Compile and automatically prefix stylesheets
+//Compile and automatically prefix styleheets
 gulp.task('sass', function () {
     return gulp.src(path.app.scss)
         .pipe(plumber())
@@ -214,11 +227,12 @@ gulp.task('build', function(callback) {
     runSequence('clean',
         'sass', ['images', 'copy', 'fonts', 'jquery'],
         'html',
+        'sitemap',
         callback);
 });
 
 
-//create sitemap 
+//create sitemap
 gulp.task('sitemap', function(){
 	return gulp.src('./dist/**/*.html')
 			 .pipe(sitemap({

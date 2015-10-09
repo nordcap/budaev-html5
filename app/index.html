@@ -73,12 +73,14 @@
 
 
 
-    <!-- build:css styles/vendor.min.css -->
+    <!-- build:css css/vendor.min.css -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.min.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
+
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -86,11 +88,34 @@
 </head>
 
 <body>
-<header></header>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: rgb(161, 45, 207);
+            flex-basis: 20vh;
+        }
+        main {
+            background-color: whitergb(217, 214, 222);
+            flex: 1 0 auto;
+        }
+        footer {
+            background-color: rgb(65, 28, 213);
+            height: 10vh;
+        }
+    </style>
+<header>
+    <h2>header</h2>
+</header>
 <main>
     <h1>Template frontend application from Alex Budaev</h1>
 </main>
-<footer></footer>
+<footer>
+    <h2>footer</h2>
+</footer>
 
 
 <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
@@ -98,19 +123,20 @@
 
 
 <script>
-    window.jQuery || document.write("<script src='scripts/jquery.min.js'>\x3C/script>")
+    window.jQuery || document.write("<script src='js/jquery.min.js'>\x3C/script>")
 </script>
-<!-- build:js scripts/vendor.min.js -->
+<!-- build:js js/vendor.min.js -->
 <!-- endbuild -->
 
-<!-- build:js scripts/main.min.js -->
-<script src="scripts/main.js"></script>
-<script src="scripts/metrika.js"></script>
+<!-- build:js js/main.min.js -->
+<script src="js/main.js"></script>
 <!-- endbuild -->
 
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/32450990" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
+
+
+<!-- here Яндекс метрика -->
+<!-- here Google Analitics -->
+
 </body>
 
 </html>

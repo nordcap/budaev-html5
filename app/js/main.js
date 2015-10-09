@@ -1,13 +1,14 @@
-;(function() {
+;(function($) {
     "use strict";
 
     $(window).load(function() {
+        console.log('load');
     });
 
 
     $(document).ready(function() {
 
-
+    console.log('ready');
  /********* Contact form submission code *********/
 
     var form = $('#form-contact'); // Get the form
@@ -43,7 +44,7 @@
                     // Clear the form
                     $('#phone').val('');
 
-                    
+
                 } else {
                     if (data.errors.message) {
 
@@ -90,4 +91,4 @@
 
 
 
-})();
+})(jQuery);
