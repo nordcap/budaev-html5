@@ -127,8 +127,13 @@
     window.jQuery || document.write("<script src='js/jquery.min.js'>\x3C/script>")
 </script>
 
-
+<!-- для релиза все библиотеки собираются в одну -->
 <script src="js/vendor.min.js"></script>
+
+<!-- для отладки. При релизе данный блок удаляется -->
+<!-- build:remove -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+<!-- endbuild -->
 
 <!-- build:js js/main.min.js -->
 <script  src="js/main.js"></script>
