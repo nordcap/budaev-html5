@@ -11,6 +11,11 @@
     console.log('ready');
 
 
+    //activate WOW.js
+    new WOW().init();
+
+
+
     var form = $('#form-contact'); // Get the form
     var formMessages = $('#form-messages'); // Get the div to print the form messages
 

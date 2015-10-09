@@ -119,7 +119,8 @@ gulp.task('jquery', function(){
 //concat js files => error concat&minify in task 'html'
 gulp.task('concat-js', function() {
   return gulp.src([
-      path.app.bower+'bootstrap/dist/js/bootstrap.js'
+      path.app.bower + 'bootstrap/dist/js/bootstrap.js',
+      path.app.bower + 'wow/dist/wow.js'
 
   ])
     .pipe(concat('vendor.min.js'))

@@ -13,6 +13,7 @@
     "compass-breakpoint": "~2.6.1",
     "reset-css": "~2.0.2011012602",
     "bootstrap": "~3.3.5",
-    "animate.css": "~3.4.0"
+    "animate.css": "~3.4.0",
+    "wow": "~1.1.2"
   }
 }
