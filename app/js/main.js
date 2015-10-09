@@ -9,7 +9,7 @@
     $(document).ready(function() {
 
     console.log('ready');
- /********* Contact form submission code *********/
+
 
     var form = $('#form-contact'); // Get the form
     var formMessages = $('#form-messages'); // Get the div to print the form messages

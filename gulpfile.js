@@ -23,7 +23,7 @@ var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var pngquant = require('imagemin-pngquant');
 var sitemap = require('gulp-sitemap');
-//var concat = require('gulp-concat'); //concat files
+var concat = require('gulp-concat');
 
 /* for use sprites
 var spritesmith = require('gulp.spritesmith');
@@ -108,25 +108,20 @@ gulp.task('fonts', function() {
 
 //copy jquery in dest
 gulp.task('jquery', function(){
-    return gulp.src('./app/js/jquery.min.js')
+    return gulp.src('./app/bower_components/jquery/dist/jquery.min.js')
         .pipe(gulp.dest(path.dist.js))
         .pipe(size({title: 'jquery'}));
 });
 
 
 //concat js files => error concat&minify in task 'html'
-// gulp.task('concat-js', function() {
-//   return gulp.src([
-//       './app/js/bootstrap.min.js',
-//       './app/js/jquery.easing.min.js',
-//       './app/js/jquery.fittext.js',
-//       './app/js/wow.min.js'
-//   ])
-//     .pipe(concat('all.min.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest(path.dist.js))
-//     .pipe(size({title: 'concat-js'}));
-// });
+gulp.task('concat-js', function() {
+  return gulp.src('./app/js/lib/*.js')
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.dist.js))
+    .pipe(size({title: 'concat-js'}));
+});
 
 
 
@@ -226,6 +221,7 @@ gulp.task('default', ['sass','browser-sync','watch']);
 gulp.task('build', function(callback) {
     runSequence('clean',
         'sass', ['images', 'copy', 'fonts', 'jquery'],
+        'concat-js',
         'html',
         'sitemap',
         callback);
