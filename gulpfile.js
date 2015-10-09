@@ -44,12 +44,14 @@ var path = {
 
     },
     app: {
+        bower: './app/bower_components/',
         html: './app/*.html',
         js: './app/js/**/*.js',
         css: './app/css/',
         scss: './app/sass/main.scss',
         img: './app/images/**/*.*',
-        fonts: './app/fonts/**/*.*'
+        fonts: './app/fonts/**/*.*',
+        lib: './app/lib/'
 
     },
     watch: {
@@ -116,7 +118,10 @@ gulp.task('jquery', function(){
 
 //concat js files => error concat&minify in task 'html'
 gulp.task('concat-js', function() {
-  return gulp.src('./app/js/lib/*.js')
+  return gulp.src([
+      path.app.bower+'bootstrap/dist/js/bootstrap.js'
+
+  ])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(path.dist.js))
