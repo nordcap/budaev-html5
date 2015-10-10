@@ -120,7 +120,8 @@ gulp.task('jquery', function(){
 gulp.task('concat-js', function() {
   return gulp.src([
       path.app.bower + 'bootstrap/dist/js/bootstrap.js',
-      path.app.bower + 'wow/dist/wow.js'
+      path.app.bower + 'wow/dist/wow.js',
+      path.app.bower + 'waypoints/lib/jquery.waypoints.js'
 
   ])
     .pipe(concat('vendor.min.js'))
