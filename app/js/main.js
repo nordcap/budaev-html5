@@ -62,7 +62,7 @@
                     items: 5
                 }
             }
-        })
+        });
 
 
         var form = $('#form-contact'); // Get the form
