@@ -27,6 +27,11 @@
             offset: '80%'
         });
 
+
+
+            $('.magnific-popup .image-link').magnificPopup({type:'image'});
+
+
         var form = $('#form-contact'); // Get the form
         var formMessages = $('#form-messages'); // Get the div to print the form messages
 

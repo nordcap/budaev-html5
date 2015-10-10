@@ -121,7 +121,8 @@ gulp.task('concat-js', function() {
   return gulp.src([
       path.app.bower + 'bootstrap/dist/js/bootstrap.js',
       path.app.bower + 'wow/dist/wow.js',
-      path.app.bower + 'waypoints/lib/jquery.waypoints.js'
+      path.app.bower + 'waypoints/lib/jquery.waypoints.js',
+      path.app.bower + 'magnific-popup/dist/jquery.magnific-popup.js'
 
   ])
     .pipe(concat('vendor.min.js'))
