@@ -22,14 +22,47 @@
 
         var waypoints1 = $('.way').waypoint({
             handler: function() {
-                    console.log('Отработана библиотека waypoints.js');
+                console.log('Отработана библиотека waypoints.js');
             },
             offset: '80%'
         });
 
 
 
-            $('.magnific-popup .image-link').magnificPopup({type:'image'});
+        $('.magnific-popup .image-link').magnificPopup({
+            type: 'image'
+        });
+
+
+
+        // $("#owl-demo").owlCarousel({
+        //
+        //     autoPlay: 3000, //Set AutoPlay to 3 seconds
+        //
+        //     items: 4,
+        //     itemsDesktop: [1199, 3],
+        //     itemsDesktopSmall: [979, 3]
+        //
+        // });
+
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            center: true,
+            autoplay:true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
 
 
         var form = $('#form-contact'); // Get the form

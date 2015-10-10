@@ -16,6 +16,7 @@
     "animate.css": "~3.4.0",
     "wow": "~1.1.2",
     "waypoints": "~4.0.0",
-    "magnific-popup": "~1.0.0"
+    "magnific-popup": "~1.0.0",
+    "owl.carousel": "owl-carousel2#~2.0.0-beta.3"
   }
 }
