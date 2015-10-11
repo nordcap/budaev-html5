@@ -34,18 +34,6 @@
         });
 
 
-
-        // $("#owl-demo").owlCarousel({
-        //
-        //     autoPlay: 3000, //Set AutoPlay to 3 seconds
-        //
-        //     items: 4,
-        //     itemsDesktop: [1199, 3],
-        //     itemsDesktopSmall: [979, 3]
-        //
-        // });
-
-
         $('.owl-carousel').owlCarousel({
             loop: true,
             center: true,
@@ -56,10 +44,10 @@
                     items: 1
                 },
                 600: {
-                    items: 3
+                    items: 1
                 },
                 1000: {
-                    items: 5
+                    items: 1
                 }
             }
         });
@@ -68,7 +56,7 @@
         var form = $('#form-contact'); // Get the form
         var formMessages = $('#form-messages'); // Get the div to print the form messages
 
-
+/*
         // Set up an event listener for the contact form.
         $(form).on('submit', function(event) {
             // Stop the browser from submitting the form and refresh the page.
@@ -139,7 +127,7 @@
                 }
             });
         });
-
+*/
     }); //end ready
 
 
