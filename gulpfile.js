@@ -24,10 +24,10 @@ var sourcemaps = require('gulp-sourcemaps');
 var pngquant = require('imagemin-pngquant');
 var sitemap = require('gulp-sitemap');
 var concat = require('gulp-concat');
-
+var merge = require('merge-stream');
 /* for use sprites
 var spritesmith = require('gulp.spritesmith');
-var merge = require('merge-stream');
+
 */
 
 
@@ -133,6 +133,27 @@ gulp.task('concat-js', function() {
 });
 
 
+//concat css files => google optimize speed
+gulp.task('concat-css', function(){
+    var cssVendor =  gulp.src([
+        path.app.bower + 'bootstrap/dist/css/bootstrap.css',
+        path.app.bower + 'animate.css/animate.css',
+        path.app.bower + 'magnific-popup/dist/magnific-popup.css',
+        path.app.bower + 'owl.carousel/dist/assets/owl.carousel.css',
+        path.app.bower + 'owl.carousel/dist/assets/owl.theme.default.css'
+    ])
+        .pipe(concat('vendor.min.css'))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(path.dist.css));
+
+    var cssMain = gulp.src(path.app.css+'main.css')
+        .pipe(concat('main.min.css'))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(path.dist.css));
+
+    return merge(cssVendor, cssMain);
+
+});
 
 // Copy all files at the root level (app)
 gulp.task('copy', function(){
@@ -230,6 +251,7 @@ gulp.task('default', ['sass','browser-sync','watch']);
 gulp.task('build', function(callback) {
     runSequence('clean',
         'sass', ['images', 'copy', 'fonts', 'jquery'],
+        'concat-css',
         'concat-js',
         'html',
         'sitemap',
