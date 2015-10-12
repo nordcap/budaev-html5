@@ -46,7 +46,7 @@ var path = {
     app: {
         bower: './app/bower_components/',
         html: './app/*.html',
-        js: './app/js/**/*.js',
+        js: './app/js/',
         css: './app/css/',
         scss: './app/sass/main.scss',
         img: './app/images/**/*.*',
@@ -81,7 +81,7 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-  return gulp.src(path.app.js)
+  return gulp.src(path.watch.js)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
