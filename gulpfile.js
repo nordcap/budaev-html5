@@ -213,7 +213,7 @@ gulp.task('clean', del.bind(null, ['dist/**'],{dot: true}));
 
 //Compile and automatically prefix styleheets
 gulp.task('sass', function () {
-    return gulp.src(path.app.scss)
+    return gulp.src(path.watch.scss)
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(sass.sync().on('error', sass.logError))
