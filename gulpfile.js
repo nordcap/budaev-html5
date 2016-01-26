@@ -6,8 +6,8 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
-var wiredep = require('wiredep').stream;
-var useref = require('gulp-useref');
+
+
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
@@ -18,6 +18,8 @@ var pagespeed = require('psi');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var jshint = require('gulp-jshint');
+
+
 var cache = require('gulp-cache');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
@@ -26,11 +28,9 @@ var sitemap = require('gulp-sitemap');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
 /* for use sprites
-var spritesmith = require('gulp.spritesmith');
+ var spritesmith = require('gulp.spritesmith');
 
-*/
-
-
+ */
 
 
 var path = {
@@ -65,30 +65,28 @@ var path = {
 
 
 var AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
 ];
-
-
 
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-  return gulp.src(path.watch.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    return gulp.src(path.watch.js)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
 });
 
 
 //copy img files and optimize images
-gulp.task('images', function() {
+gulp.task('images', function () {
     return gulp.src(path.app.img)
         .pipe(plumber())
         // .pipe(cache(imagemin({
@@ -101,7 +99,7 @@ gulp.task('images', function() {
 });
 
 // Copy web fonts to dist
-gulp.task('fonts', function() {
+gulp.task('fonts', function () {
     return gulp.src(path.app.fonts)
         .pipe(plumber())
         .pipe(gulp.dest(path.dist.fonts))
@@ -109,7 +107,7 @@ gulp.task('fonts', function() {
 });
 
 //copy jquery in dest
-gulp.task('jquery', function(){
+gulp.task('jquery', function () {
     return gulp.src('./app/bower_components/jquery/dist/jquery.min.js')
         .pipe(gulp.dest(path.dist.js))
         .pipe(size({title: 'jquery'}));
@@ -117,25 +115,36 @@ gulp.task('jquery', function(){
 
 
 //concat js files => error concat&minify in task 'html'
-gulp.task('concat-js', function() {
-  return gulp.src([
-      path.app.bower + 'bootstrap/dist/js/bootstrap.js',
-      path.app.bower + 'wow/dist/wow.js',
-      path.app.bower + 'waypoints/lib/jquery.waypoints.js',
-      path.app.bower + 'magnific-popup/dist/jquery.magnific-popup.js',
-      path.app.bower + 'owl.carousel/dist/owl.carousel.js'
+gulp.task('concat-js', function () {
+    var jsVendor = gulp.src([
+        path.app.bower + 'bootstrap/dist/js/bootstrap.js',
+        path.app.bower + 'wow/dist/wow.js',
+        path.app.bower + 'waypoints/lib/jquery.waypoints.js',
+        path.app.bower + 'magnific-popup/dist/jquery.magnific-popup.js',
+        path.app.bower + 'owl.carousel/dist/owl.carousel.js'
 
-  ])
-    .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(path.dist.js))
-    .pipe(size({title: 'concat-js'}));
+    ])
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.app.js));
+
+
+    var jsMain = gulp.src([
+        path.app.js + 'main.js'
+    ])
+        .pipe(concat('main.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.app.js))
+        .pipe(size({title: 'concat-js'}));
+
+    return merge(jsVendor, jsMain);
+
 });
 
 
 //concat css files => google optimize speed
-gulp.task('concat-css', function(){
-    var cssVendor =  gulp.src([
+gulp.task('concat-css', function () {
+    var cssVendor = gulp.src([
         path.app.bower + 'bootstrap/dist/css/bootstrap.css',
         path.app.bower + 'animate.css/animate.css',
         path.app.bower + 'magnific-popup/dist/magnific-popup.css',
@@ -144,32 +153,49 @@ gulp.task('concat-css', function(){
     ])
         .pipe(concat('vendor.min.css'))
         .pipe(minifyCss())
-        .pipe(gulp.dest(path.dist.css));
+        .pipe(gulp.dest(path.app.css));
 
-    var cssMain = gulp.src(path.app.css+'main.css')
+    var cssMain = gulp.src(path.app.css + 'main.css')
         .pipe(concat('main.min.css'))
         .pipe(minifyCss())
-        .pipe(gulp.dest(path.dist.css));
+        .pipe(gulp.dest(path.app.css));
 
     return merge(cssVendor, cssMain);
 
 });
 
-// Copy all files at the root level (app)
-gulp.task('copy', function(){
-    return gulp.src([
+// Copy all files at the root level (app) and css and js files
+gulp.task('copy', function () {
+    var allFiles = gulp.src([
         'app/*.*',
         '!app/*.html',
         'app/.htaccess'
-        ],  {  dot: true  })
-    .pipe(gulp.dest(path.dist.html))
-    .pipe(size({title: 'copy'}));
+    ], {dot: true})
+        .pipe(gulp.dest(path.dist.html));
+
+
+    var cssFiles = gulp.src([
+        path.app.css + 'vendor.min.css',
+        path.app.css + 'main.min.css'
+    ])
+        .pipe(gulp.dest(path.dist.css));
+
+    var jsFiles = gulp.src([
+        path.app.js + 'vendor.min.js',
+        path.app.js + 'main.min.js'
+    ])
+        .pipe(gulp.dest(path.dist.js))
+        .pipe(size({title: 'copy files'}));
+
+
+    return merge(allFiles, cssFiles, jsFiles);
+
 });
 
 
 //assemble html, concat css & js files + minify files
-gulp.task('html', function() {
-    var assets = useref.assets();
+gulp.task('html', function () {
+
     var opts = {
         empty: true,
         conditionals: true,
@@ -179,37 +205,22 @@ gulp.task('html', function() {
 
     return gulp.src(path.app.html)
         .pipe(plumber())
-        //.pipe(rigger())
-
-        .pipe(assets)
         // Concatenate and minify JavaScri
         .pipe(gulpif('*.js', uglify()))
         // Concatenate and minify css
         .pipe(gulpif('*.css', minifyCss()))
-        .pipe(assets.restore())
-        .pipe(useref())
         // Output files
         .pipe(gulp.dest(path.dist.html))
-         // Minify any HTML
+        // Minify any HTML
         .pipe(minifyHTML(opts))
         .pipe(gulp.dest(path.dist.html))
         .pipe(size({title: 'html'}));
 });
 
 
-//wiredep
-gulp.task('bower', function() {
-    return gulp.src(path.app.html)
-        .pipe(plumber())
-        .pipe(wiredep({
-            directory: "app/bower_components"
-        }))
-        .pipe(gulp.dest('./app'));
-});
-
 
 // Clean output directory
-gulp.task('clean', del.bind(null, ['dist/**'],{dot: true}));
+gulp.task('clean', del.bind(null, ['dist/**'], {dot: true}));
 
 //Compile and automatically prefix styleheets
 gulp.task('sass', function () {
@@ -226,7 +237,7 @@ gulp.task('sass', function () {
 });
 
 // Watch files for changes & reload
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 
     gulp.watch(path.watch.scss, ['sass']);
     gulp.watch(path.watch.html).on('change', browserSync.reload);
@@ -234,25 +245,23 @@ gulp.task('watch', function() {
 });
 
 //browser-sync
-gulp.task('browser-sync', function(){
+gulp.task('browser-sync', function () {
     browserSync.init({
         proxy: "budaev-html5/app"
     });
 });
 
 //default
-/*gulp.task('default', function(callback){
-    runSequence('sass','browser-sync','watch',callback);
-});*/
 
-gulp.task('default', ['sass','browser-sync','watch']);
+
+gulp.task('default', function (callback) {
+    runSequence('sass', 'concat-css', 'concat-js', 'browser-sync', 'watch', callback)
+});
 
 //build production files
-gulp.task('build', function(callback) {
+gulp.task('build', function (callback) {
     runSequence('clean',
-        'sass', ['images', 'copy', 'fonts', 'jquery'],
-        'concat-css',
-        'concat-js',
+        'sass', 'concat-css', 'concat-js', ['images', 'copy', 'fonts', 'jquery'],
         'html',
         'sitemap',
         callback);
@@ -260,43 +269,43 @@ gulp.task('build', function(callback) {
 
 
 //create sitemap
-gulp.task('sitemap', function(){
-	return gulp.src('./dist/**/*.html')
-			 .pipe(sitemap({
-						siteUrl: 'http://yuorsite.com',
-						priority: '1.0'
-					}))
-			.pipe(gulp.dest(path.dist.html));
+gulp.task('sitemap', function () {
+    return gulp.src('./dist/**/*.html')
+        .pipe(sitemap({
+            siteUrl: 'http://yuorsite.com',
+            priority: '1.0'
+        }))
+        .pipe(gulp.dest(path.dist.html));
 });
 
-/*
+
 //create sprites
 gulp.task('sprite', function () {
-var spriteData = gulp.src('./app/images/icon/*.png')
-  .pipe(spritesmith({
+    var spriteData = gulp.src('./app/images/icon/*.png')
+        .pipe(spritesmith({
             imgName: 'sprite.png',
             imgPath: '../images/sprite.png',
-            cssName: 'sprite.scss' ,
+            cssName: 'sprite.scss',
             algorithm: 'top-down',
             padding: 10,
-          }));
+        }));
 
-var imgStream = spriteData.img.pipe(gulp.dest('./app/images/'));
+    var imgStream = spriteData.img.pipe(gulp.dest('./app/images/'));
 
-var cssStream = spriteData.css.pipe(gulp.dest('./app/sass/utils/'));
+    var cssStream = spriteData.css.pipe(gulp.dest('./app/sass/utils/'));
 
-return merge(imgStream, cssStream);
+    return merge(imgStream, cssStream);
 
 });
-*/
+
 
 // Run PageSpeed Insights
 gulp.task('pagespeed', function (cb) {
-  // Update the below URL to the public URL of your site
-  pagespeed.output('yuorsite.com', {
-    strategy: 'mobile',
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb);
+    // Update the below URL to the public URL of your site
+    pagespeed.output('yuorsite.com', {
+        strategy: 'mobile',
+        // By default we use the PageSpeed Insights free (no API key) tier.
+        // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
+        // key: 'YOUR_API_KEY'
+    }, cb);
 });
