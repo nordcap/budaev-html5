@@ -1,25 +1,19 @@
 "use strict";
 
-//var rigger = require('gulp-rigger');//concat html files
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
+var cssnano = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
-
-
-var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
-var minifyHTML = require('gulp-minify-html');
+var minifyHTML = require('gulp-htmlmin');
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var pagespeed = require('psi');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var jshint = require('gulp-jshint');
-
-
 var cache = require('gulp-cache');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
@@ -152,12 +146,14 @@ gulp.task('concat-css', function () {
         path.app.bower + 'owl.carousel/dist/assets/owl.theme.default.css'
     ])
         .pipe(concat('vendor.min.css'))
-        .pipe(minifyCss())
+        //.pipe(minifyCss())
+        .pipe(cssnano())
         .pipe(gulp.dest(path.app.css));
 
     var cssMain = gulp.src(path.app.css + 'main.css')
         .pipe(concat('main.min.css'))
-        .pipe(minifyCss())
+        .pipe(cssnano())
+        //.pipe(minifyCss())
         .pipe(gulp.dest(path.app.css));
 
     return merge(cssVendor, cssMain);
@@ -196,23 +192,16 @@ gulp.task('copy', function () {
 //assemble html, concat css & js files + minify files
 gulp.task('html', function () {
 
-    var opts = {
-        empty: true,
-        conditionals: true,
-        spare: true,
-        quotes: true
-    };
-
     return gulp.src(path.app.html)
         .pipe(plumber())
-        // Concatenate and minify JavaScri
-        .pipe(gulpif('*.js', uglify()))
-        // Concatenate and minify css
-        .pipe(gulpif('*.css', minifyCss()))
-        // Output files
-        .pipe(gulp.dest(path.dist.html))
         // Minify any HTML
-        .pipe(minifyHTML(opts))
+        .pipe(minifyHTML({
+            removeComments: true,
+            removeCommentsFromCDATA: true,
+            collapseWhitespace: true,
+            minifyJS: true,
+            minifyCSS:true
+        }))
         .pipe(gulp.dest(path.dist.html))
         .pipe(size({title: 'html'}));
 });
