@@ -1,0 +1,700 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lorem",
+				"lorem	Lorem ipsum"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"end",
+				"endif	(header.php)"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"LA",
+				"LANDING_PAGE"
+			],
+			[
+				"reso",
+				"resource"
+			],
+			[
+				"pho",
+				"phonecatApp"
+			],
+			[
+				"loca",
+				"locationProvider"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"text",
+				"textShadow"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"on",
+				"on	.on()"
+			],
+			[
+				"add",
+				"addClass	.addClass()"
+			],
+			[
+				"e",
+				"each	.each()"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"form",
+				"form	form - Placeholder"
+			],
+			[
+				"input",
+				"inputs	input - submit"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"ba",
+				"background-position"
+			],
+			[
+				"co",
+				"contain"
+			],
+			[
+				"jque",
+				"jquery.fancybox-media.js"
+			],
+			[
+				"ve",
+				"vendor/"
+			],
+			[
+				"img",
+				"img	Image - Placeholder"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"in",
+				"inherit"
+			],
+			[
+				"rgba",
+				"rgba()"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"cl",
+				"class"
+			],
+			[
+				"im",
+				"import	(main.scss)"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"compass",
+				"compass〔variable〕"
+			],
+			[
+				"gulp",
+				"gulp-plumber"
+			],
+			[
+				"btn",
+				"button	<button>"
+			],
+			[
+				"nav",
+				"nav	nav - Placeholder"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"col",
+				"colmr	column-rule"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"rgb",
+				"rgb()"
+			],
+			[
+				"pare",
+				"parentDisable"
+			],
+			[
+				"ti",
+				"timerId"
+			],
+			[
+				"ru",
+				"running"
+			],
+			[
+				"new",
+				"newReady"
+			],
+			[
+				"o",
+				"onReady"
+			],
+			[
+				"wa",
+				"water"
+			],
+			[
+				"th",
+				"throw"
+			],
+			[
+				"get",
+				"getFullName"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"set",
+				"setSurname"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"table",
+				"table	<table>"
+			],
+			[
+				"ul",
+				"ul	<ul>"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"ca",
+				"call"
+			],
+			[
+				"html",
+				"html5	Simple HTML5 Boilerplate"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"fu",
+				"func"
+			],
+			[
+				"fl",
+				"fw-lr	font-weight: lighter;"
+			],
+			[
+				"ar",
+				"arguments"
+			],
+			[
+				"op",
+				"operand"
+			],
+			[
+				"calc",
+				"calculate"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"st",
+				"startingValue"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"b",
+				"bufText"
+			],
+			[
+				"str",
+				"strDate"
+			],
+			[
+				"ge",
+				"getDate"
+			],
+			[
+				"num",
+				"numDay"
+			],
+			[
+				"d",
+				"date"
+			],
+			[
+				"f",
+				"function"
+			],
+			[
+				"p",
+				"people"
+			],
+			[
+				"ra",
+				"random"
+			],
+			[
+				"spl",
+				"splice"
+			],
+			[
+				"m",
+				"maxSum"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"r",
+				"rand"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"g",
+				"goods"
+			],
+			[
+				"t",
+				"title"
+			],
+			[
+				"is",
+				"isNumeric"
+			],
+			[
+				"s",
+				"sum"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"Disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: form - Placeholder"
+			],
+			[
+				"package co",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 188.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/OpenServer/domains/budaev-portfolio/app/sass/components/_gallery.scss",
+		"/D/OpenServer/domains/budaev-portfolio/app/sass/utils/sprite.scss",
+		"/D/OpenServer/domains/budaev-portfolio/package.json",
+		"/D/OpenServer/domains/budaev-portfolio/app/sass/utils/sprite-old.scss",
+		"/D/OpenServer/domains/budaev-portfolio/app/sass/layout/_footer.scss",
+		"/D/OpenServer/domains/budaev-portfolio/app/images/sprite.png",
+		"/D/OpenServer/domains/Moderna-html/js/portfolio/setting.js",
+		"/D/OpenServer/domains/Moderna-html/css/style.css",
+		"/D/OpenServer/domains/Moderna-html/skins/default.css",
+		"/D/OpenServer/domains/Moderna-html/js/validate.js",
+		"/D/OpenServer/domains/Moderna-html/js/custom.js",
+		"/D/OpenServer/domains/Moderna-html/js/jquery.js",
+		"/D/OpenServer/domains/materialblog/dist/sitemap.xml",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/style.css",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/index.php",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/js/clean-blog.js",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/css/clean-blog.css",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/less/variables.less",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/css/bootstrap.css",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/css/main.css",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/less/clean-blog.less",
+		"/d/alebu/alebu/index.php",
+		"/d/alebu/alebu/functions.php",
+		"/D/OpenServer/domains/clean.local/wp-content/themes/cleanblog/functions.php",
+		"/d/alebu/alebu/page.php",
+		"/d/alebu/alebu/template-parts/content-page.php",
+		"/d/alebu/alebu/archive.php",
+		"/d/alebu/alebu/404.php",
+		"/d/alebu/alebu/template-parts/content-search.php",
+		"/d/alebu/alebu/template-parts/content-none.php",
+		"/d/alebu/alebu/template-parts/content.php",
+		"/d/alebu/alebu/footer.php",
+		"/d/alebu/alebu/header.php",
+		"/d/alebu/alebu/inc/jetpack.php",
+		"/d/alebu/alebu/inc/customizer.php",
+		"/d/alebu/alebu/inc/extras.php",
+		"/d/alebu/alebu/inc/template-tags.php",
+		"/d/alebu/alebu/inc/custom-header.php",
+		"/d/alebu/alebu/languages/alebu.pot",
+		"/C/Users/alex/AppData/Local/Temp/scp40189/home/srv64841/htdocs/srv64841.ht-test.ru/wp-config.php",
+		"/C/Users/alex/AppData/Local/Temp/scp42289/home/srv64841/htdocs/srv64841.ht-test.ru/wp-content/themes/cleanblog/contact.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/functions.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/index.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/header.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/forums.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/single.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/style.css",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/footer.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/about.php",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/contact.php",
+		"/d/Темы Wordpress/2015/evolve.3.5.0-readmy.txt",
+		"/D/OpenServer/domains/cleanblog.local/wp-content/themes/cleanblog/auth.php",
+		"/D/OpenServer/domains/alebu/app/index.html",
+		"/D/OpenServer/domains/start_html/_clean_sass/index.html",
+		"/D/OpenServer/domains/budaev-portfolio/gulpfile.js",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/phones/samsung-galaxy-tab.json",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/phones/phones.json",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/js/app.js",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/js/directives.js",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/js/filters.js",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/js/services.js",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/template/contact.html",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/template/about.html",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/template/index.html",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/index.html",
+		"/D/OpenServer/domains/loftblog-angular-phonecat-app/project.sublime-project",
+		"/D/OpenServer/domains/budaev-portfolio/app/index.html",
+		"/D/OpenServer/domains/budaev-portfolio/app/styles/main.css",
+		"/D/OpenServer/domains/budaev-portfolio/bower.json",
+		"/D/OpenServer/domains/budaev.github.io/package.json",
+		"/D/OpenServer/domains/budaev.github.io/bower.json",
+		"/D/OpenServer/domains/budaev.github.io/app/index.html",
+		"/D/OpenServer/domains/budaev.github.io/.gitignore",
+		"/D/OpenServer/domains/checklist/index.html",
+		"/D/OpenServer/domains/wsk/app/manifest.json",
+		"/D/OpenServer/domains/html5/bower_components/HTML5-Reset/index.html",
+		"/D/OpenServer/domains/med/app/index.html",
+		"/D/OpenServer/domains/wsk/app/styles/main.scss",
+		"/D/OpenServer/domains/wsk/app/images/icons/placeholder--small.png",
+		"/D/OpenServer/domains/wsk/app/manifest.webapp",
+		"/D/OpenServer/domains/wsk/app/styleguide.html",
+		"/D/OpenServer/domains/wsk/app/robots.txt",
+		"/D/OpenServer/domains/wsk/app/styles/_h5bp.scss",
+		"/D/OpenServer/domains/med/app/mail.php",
+		"/D/OpenServer/domains/med/app/js/main.js",
+		"/D/OpenServer/domains/med/app/sass/base/_typography.scss",
+		"/D/OpenServer/domains/med/app/sass/pages/_home.scss",
+		"/D/OpenServer/domains/med/app/sass/utils/_variables.scss",
+		"/D/OpenServer/domains/med/app/css/main.css",
+		"/D/OpenServer/domains/med/gulpfile.js",
+		"/D/OpenServer/domains/med/app/sass/layout/_grid.scss",
+		"/D/OpenServer/domains/med/bower.json",
+		"/D/OpenServer/domains/med/app/css/font-awesome.css",
+		"/D/OpenServer/domains/med/app/sass/utils/_mixins.scss",
+		"/D/OpenServer/domains/med/app/sass/base/_reset.scss",
+		"/D/OpenServer/domains/med/package.json",
+		"/D/OpenServer/domains/med/app/config.rb",
+		"/D/OpenServer/progs/_Office/Sublime_text/Data/Packages/ColorPicker/ColorPicker.sublime-settings",
+		"/D/OpenServer/progs/_Office/Sublime_text/Data/Packages/User/ColorPicker.sublime-settings",
+		"/D/OpenServer/domains/med/app/sass/main.scss",
+		"/D/OpenServer/progs/_Office/Sublime_text/Data/Packages/User/Preferences.sublime-settings",
+		"/D/OpenServer/domains/med/app/sass/pages/_helpers.scss",
+		"/D/OpenServer/domains/med/app/sass/pages/_mixins.scss",
+		"/D/OpenServer/domains/med/app/sass/pages/_functions.scss",
+		"/D/OpenServer/domains/med/app/sass/layout/_footer.scss",
+		"/D/OpenServer/domains/med/app/sass/layout/_header.scss",
+		"/D/OpenServer/domains/med/app/sass/layout/_grids.scss",
+		"/D/OpenServer/domains/med/app/sass/utils/_grids.scss",
+		"/D/OpenServer/domains/med/app/sass/base/_base.scss",
+		"/D/OpenServer/domains/med/app/sass/style.scss",
+		"/D/OpenServer/domains/brost/sass/main.scss",
+		"/D/OpenServer/domains/js/index.html",
+		"/D/OpenServer/domains/js/parent.js",
+		"/D/OpenServer/domains/js/getset.js",
+		"/D/OpenServer/domains/js/CoffeeMashine.js",
+		"/D/OpenServer/domains/checklist/assets/blueprint-css/screen.css",
+		"/D/OpenServer/domains/js/instance.js",
+		"/D/OpenServer/domains/materialblog/app/js/main.js",
+		"/D/OpenServer/domains/js/carring.js",
+		"/D/OpenServer/domains/js/decorator.js",
+		"/D/OpenServer/domains/js/json.js",
+		"/D/OpenServer/domains/materialblog/app/sass/main.scss",
+		"/D/OpenServer/domains/nasty-lp/app/index.html",
+		"/D/OpenServer/domains/js/fg.html",
+		"/D/OpenServer/domains/js/get.js",
+		"/D/OpenServer/domains/js/method.js",
+		"/D/OpenServer/domains/js/new.js",
+		"/D/OpenServer/domains/js/this.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"<!--***************************************************************************** ",
+			"path.app.js",
+			"path.dist.css",
+			"sass",
+			"rename",
+			"JPG",
+			"низкие",
+			"\"></",
+			"mark",
+			"isNaN",
+			"operand",
+			"addMethod",
+			"function",
+			"arr",
+			"var",
+			"];\n",
+			"renam",
+			"min.js",
+			"charset",
+			"check"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 96.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true
+}
