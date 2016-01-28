@@ -220,15 +220,25 @@ gulp.task('sass', function () {
         .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.app.css))
-        .pipe(size({title: 'sass'}))
-        .pipe(browserSync.stream());
+        .pipe(size({title: 'sass'}));
 
 });
+
+
+//compile only main.scss and rename
+gulp.task('css-watch', ['sass'], function () {
+    return gulp.src(path.app.css + 'main.css')
+        .pipe(concat('main.min.css'))
+        .pipe(cssnano())
+        .pipe(gulp.dest(path.app.css))
+        .pipe(browserSync.stream());
+});
+
 
 // Watch files for changes & reload
 gulp.task('watch', function () {
 
-    gulp.watch(path.watch.scss, ['sass']);
+    gulp.watch(path.watch.scss, ['css-watch']);
     gulp.watch(path.watch.html).on('change', browserSync.reload);
     gulp.watch(path.watch.js, ['jshint']).on('change', browserSync.reload);
 });
