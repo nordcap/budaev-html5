@@ -83,11 +83,11 @@ gulp.task('jshint', function () {
 gulp.task('images', function () {
     return gulp.src(path.app.img)
         .pipe(plumber())
-        // .pipe(cache(imagemin({
-        //     progressive: true,
-        //     interlaced: true,
-        //     use: [pngquant()]
-        // })))
+         .pipe(cache(imagemin({
+             progressive: true,
+             interlaced: true,
+             use: [pngquant()]
+         })))
         .pipe(gulp.dest(path.dist.img))
         .pipe(size({title: 'images'}));
 });

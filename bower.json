@@ -1,6 +1,6 @@
 {
   "name": "budaev-html5",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,6 +17,7 @@
     "wow": "~1.1.2",
     "waypoints": "~4.0.0",
     "magnific-popup": "~1.0.0",
-    "owl.carousel": "owl-carousel2#~2.0.0-beta.3"
+    "owl.carousel": "owl-carousel2#~2.0.0-beta.3",
+    "susy": "^2.2.12"
   }
 }

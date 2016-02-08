@@ -1,2 +1,68 @@
 //_home.scss # Стили, особые для главной страницы
-//_home.scss        # Стили, особые для главной страницы
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: rgb(161, 45, 207);
+    flex-basis: 20vh;
+    color: white;
+}
+
+main {
+    background-color: whitergb(217, 214, 222);
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: rgb(65, 28, 213);
+    height: 10vh;
+    color: white;
+}
+
+.owl-carousel {
+    padding: 50px 0;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.owl-carousel .item {
+    width: 250px;
+    margin: 5px;
+    height: auto;
+    background-color: rgb(25, 136, 30);
+}
+
+
+.wrap{
+	@include container(90%);
+	margin-bottom:rem(50);
+
+	section.magnific-popup{
+        @include span(12);
+        img{
+            max-width:100%
+        }
+        @include breakpoint($desktop){
+            @include span(8);
+            img{
+                max-width:100%
+            }
+
+        }    
+    }
+
+
+
+    section.carousel{
+        @include span(12);
+        @include breakpoint($desktop){
+            @include span(4 last);
+        }
+
+    }
+
+}

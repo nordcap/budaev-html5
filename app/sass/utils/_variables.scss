@@ -8,9 +8,16 @@ $smartfon: max-width 768px;
 
 $koef: 1.5;//line-height
 
+$browser-context: 10 !global; // base font-size in html
 
-
-
+//глобальные настройки susy
+$susy : (
+	columns: 12,
+  	gutters: 1/4,
+  	math: fluid,
+  	output: float,
+  	gutter-position: after,
+	);
 
 
 

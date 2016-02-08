@@ -2,12 +2,12 @@
 (function($) {
     "use strict";
 
-    $(window).load(function() {
+    jQuery(window).load(function($) {
         console.log('load');
     });
 
 
-    $(document).ready(function() {
+    jQuery(document).ready(function($) {
 
         console.log('ready');
 
