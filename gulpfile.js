@@ -27,7 +27,7 @@ var merge = require('merge-stream');
  */
 
 
-var path = {
+ var path = {
     dist: {
         html: './dist/',
         js: './dist/js/',
@@ -59,52 +59,52 @@ var path = {
 
 
 var AUTOPREFIXER_BROWSERS = [
-    'ie >= 10',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4.4',
-    'bb >= 10'
+'ie >= 10',
+'ie_mob >= 10',
+'ff >= 30',
+'chrome >= 34',
+'safari >= 7',
+'opera >= 23',
+'ios >= 7',
+'android >= 4.4',
+'bb >= 10'
 ];
 
 
 // Lint JavaScript
 gulp.task('jshint', function () {
     return gulp.src(path.watch.js)
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
 });
 
 
 //copy img files and optimize images
 gulp.task('images', function () {
     return gulp.src(path.app.img)
-        .pipe(plumber())
-         .pipe(cache(imagemin({
-             progressive: true,
-             interlaced: true,
-             use: [pngquant()]
-         })))
-        .pipe(gulp.dest(path.dist.img))
-        .pipe(size({title: 'images'}));
+    .pipe(plumber())
+    .pipe(cache(imagemin({
+       progressive: true,
+       interlaced: true,
+       use: [pngquant()]
+   })))
+    .pipe(gulp.dest(path.dist.img))
+    .pipe(size({title: 'images'}));
 });
 
 // Copy web fonts to dist
 gulp.task('fonts', function () {
     return gulp.src(path.app.fonts)
-        .pipe(plumber())
-        .pipe(gulp.dest(path.dist.fonts))
-        .pipe(size({title: 'fonts'}));
+    .pipe(plumber())
+    .pipe(gulp.dest(path.dist.fonts))
+    .pipe(size({title: 'fonts'}));
 });
 
 //copy jquery in dest
 gulp.task('jquery', function () {
-    return gulp.src('./app/bower_components/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest(path.dist.js))
-        .pipe(size({title: 'jquery'}));
+    return gulp.src(path.app.bower + 'jquery/dist/jquery.min.js')
+    .pipe(gulp.dest(path.dist.js))
+    .pipe(size({title: 'jquery'}));
 });
 
 
@@ -117,19 +117,19 @@ gulp.task('concat-js', function () {
         path.app.bower + 'magnific-popup/dist/jquery.magnific-popup.js',
         path.app.bower + 'owl.carousel/dist/owl.carousel.js'
 
-    ])
-        .pipe(concat('vendor.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(path.app.js));
+        ])
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.app.js));
 
 
     var jsMain = gulp.src([
         path.app.js + 'main.js'
-    ])
-        .pipe(concat('main.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(path.app.js))
-        .pipe(size({title: 'concat-js'}));
+        ])
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.app.js))
+    .pipe(size({title: 'concat-js'}));
 
     return merge(jsVendor, jsMain);
 
@@ -144,21 +144,21 @@ gulp.task('concat-css', function () {
         path.app.bower + 'magnific-popup/dist/magnific-popup.css',
         path.app.bower + 'owl.carousel/dist/assets/owl.carousel.css',
         path.app.bower + 'owl.carousel/dist/assets/owl.theme.default.css'
-    ])
-        .pipe(concat('vendor.min.css'))
+        ])
+    .pipe(concat('vendor.min.css'))
         //.pipe(minifyCss())
         .pipe(cssnano())
         .pipe(gulp.dest(path.app.css));
 
-    var cssMain = gulp.src(path.app.css + 'main.css')
+        var cssMain = gulp.src(path.app.css + 'main.css')
         .pipe(concat('main.min.css'))
         .pipe(cssnano())
         //.pipe(minifyCss())
         .pipe(gulp.dest(path.app.css));
 
-    return merge(cssVendor, cssMain);
+        return merge(cssVendor, cssMain);
 
-});
+    });
 
 // Copy all files at the root level (app) and css and js files
 gulp.task('copy', function () {
@@ -166,22 +166,22 @@ gulp.task('copy', function () {
         'app/*.*',
         '!app/*.html',
         'app/.htaccess'
-    ], {dot: true})
-        .pipe(gulp.dest(path.dist.html));
+        ], {dot: true})
+    .pipe(gulp.dest(path.dist.html));
 
 
     var cssFiles = gulp.src([
         path.app.css + 'vendor.min.css',
         path.app.css + 'main.min.css'
-    ])
-        .pipe(gulp.dest(path.dist.css));
+        ])
+    .pipe(gulp.dest(path.dist.css));
 
     var jsFiles = gulp.src([
         path.app.js + 'vendor.min.js',
         path.app.js + 'main.min.js'
-    ])
-        .pipe(gulp.dest(path.dist.js))
-        .pipe(size({title: 'copy files'}));
+        ])
+    .pipe(gulp.dest(path.dist.js))
+    .pipe(size({title: 'copy files'}));
 
 
     return merge(allFiles, cssFiles, jsFiles);
@@ -193,7 +193,7 @@ gulp.task('copy', function () {
 gulp.task('html', function () {
 
     return gulp.src(path.app.html)
-        .pipe(plumber())
+    .pipe(plumber())
         // Minify any HTML
         .pipe(minifyHTML({
             removeComments: true,
@@ -204,7 +204,7 @@ gulp.task('html', function () {
         }))
         .pipe(gulp.dest(path.dist.html))
         .pipe(size({title: 'html'}));
-});
+    });
 
 
 
@@ -214,13 +214,13 @@ gulp.task('clean', del.bind(null, ['dist/**'], {dot: true}));
 //Compile and automatically prefix styleheets
 gulp.task('sass', function () {
     return gulp.src(path.watch.scss)
-        .pipe(plumber())
-        .pipe(sourcemaps.init())
-        .pipe(sass.sync().on('error', sass.logError))
-        .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.app.css))
-        .pipe(size({title: 'sass'}));
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(path.app.css))
+    .pipe(size({title: 'sass'}));
 
 });
 
@@ -228,10 +228,10 @@ gulp.task('sass', function () {
 //compile only main.scss and rename
 gulp.task('css-watch', ['sass'], function () {
     return gulp.src(path.app.css + 'main.css')
-        .pipe(concat('main.min.css'))
-        .pipe(cssnano())
-        .pipe(gulp.dest(path.app.css))
-        .pipe(browserSync.stream());
+    .pipe(concat('main.min.css'))
+    .pipe(cssnano())
+    .pipe(gulp.dest(path.app.css))
+    .pipe(browserSync.stream());
 });
 
 
@@ -252,7 +252,7 @@ gulp.task('browser-sync', function () {
 
 //default
 
-
+//можно использовать gulp.series и gulp.parallel
 gulp.task('default', function (callback) {
     runSequence('sass', 'concat-css', 'concat-js', 'browser-sync', 'watch', callback)
 });
@@ -270,24 +270,24 @@ gulp.task('build', function (callback) {
 //create sitemap
 gulp.task('sitemap', function () {
     return gulp.src('./dist/**/*.html')
-        .pipe(sitemap({
-            siteUrl: 'http://yuorsite.com',
-            priority: '1.0'
-        }))
-        .pipe(gulp.dest(path.dist.html));
+    .pipe(sitemap({
+        siteUrl: 'http://yuorsite.com',
+        priority: '1.0'
+    }))
+    .pipe(gulp.dest(path.dist.html));
 });
 
 
 //create sprites
 gulp.task('sprite', function () {
     var spriteData = gulp.src('./app/images/icon/*.png')
-        .pipe(spritesmith({
-            imgName: 'sprite.png',
-            imgPath: '../images/sprite.png',
-            cssName: 'sprite.scss',
-            algorithm: 'top-down',
-            padding: 10,
-        }));
+    .pipe(spritesmith({
+        imgName: 'sprite.png',
+        imgPath: '../images/sprite.png',
+        cssName: 'sprite.scss',
+        algorithm: 'top-down',
+        padding: 10,
+    }));
 
     var imgStream = spriteData.img.pipe(gulp.dest('./app/images/'));
 

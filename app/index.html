@@ -2,13 +2,13 @@
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Important stuff for SEO, don't neglect. (And don't dupicate values across your site!) -->
-    <title>Шаблон frontend приложения от Алексея Будаева</title>
-    <meta name="author" content="Alex Budaev"/>
-    <meta name="description" content="Шаблон frontend приложения от Алексея Будаева">
-    <meta name="keywords" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Important stuff for SEO, don't neglect. (And don't dupicate values across your site!) -->
+	<title>Шаблон frontend приложения от Алексея Будаева</title>
+	<meta name="author" content="Alex Budaev"/>
+	<meta name="description" content="Шаблон frontend приложения от Алексея Будаева">
+	<meta name="keywords" content="">
 
     <!--  Mobile Viewport
     http://j.mp/mobileviewport & http://davidbcalhoun.com/2010/viewport-metatag
@@ -75,110 +75,107 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+     // https://github.com/filamentgroup/loadCSS
+     !function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+ </script>
+
+ <!-- Load CSS Start -->
+ <script>loadCSS("css/vendor.min.css");</script>
+ <script>loadCSS("css/main.min.css");</script>
+ <!-- Load CSS End -->
+
+
 </head>
 
 <body>
-    <header>
-        <h2>header</h2>
-    </header>
-    <main>
+	<header>
+		<h2>header</h2>
+	</header>
+	<main>
+
+<!--
+		<div class="wrap">
+			<section class="magnific-popup">
+				<a href="images/coding.jpg" class="image-link">
+					<img src="images/coding.jpg"  alt="">
+				</a>
+
+			</section>
+
+			<section class="carousel">
+				<div class="owl-carousel owl-theme">
+
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+					<div class="item">
+						<img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
+					</div>
+
+				</div>
 
 
-        <div class="wrap">
-            <section class="magnific-popup">
-                <a href="images/coding.jpg" class="image-link">
-                    <img src="images/coding.jpg"  alt="">
-                </a>
+			</section>
+		</div>
 
-            </section>
-
-            <section class="carousel">
-                <div class="owl-carousel owl-theme">
-
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-                    <div class="item">
-                        <img src="images/coding.jpg" class="img-responsive" alt="Owl Image">
-                    </div>
-
-                </div>
+		<h1 class="animated pulse infinite ">Работа animate.css</h1>
 
 
-            </section>
-        </div>
+		<section class="wow slideInLeft" data-wow-duration="2s" data-wow-delay="2s">
+			<h2>Работа wow.js</h2>
+		</section>
 
-        <h1 class="animated pulse infinite ">Работа animate.css</h1>
-
-
-        <section class="wow slideInLeft" data-wow-duration="2s" data-wow-delay="2s">
-            <h2>Работа wow.js</h2>
-        </section>
-
-        <section class="wow slideInRight" data-wow-offset="0" data-wow-iteration="10">
-            <h2>Работа wow.js</h2>
-        </section>
-        <section class="way">
-            <h2>Работа waypoints.js</h2>
-        </section>
-
-    </main>
-    <footer>
-        <h2>footer</h2>
-    </footer>
+		<section class="wow slideInRight" data-wow-offset="0" data-wow-iteration="10">
+			<h2>Работа wow.js</h2>
+		</section>
+		<section class="way">
+			<h2>Работа waypoints.js</h2>
+		</section>
+	-->
+</main>
+<footer>
+	<h2>footer</h2>
+</footer>
 
 
-    <!--load CSS-->
-    <script>
-    var ms = document.createElement("link");
-    ms.rel = "stylesheet";
-    ms.href = "css/vendor.min.css";
-    document.getElementsByTagName("head")[0].appendChild(ms);
-
-    var ms = document.createElement("link");
-    ms.rel = "stylesheet";
-    ms.href = "css/main.min.css";
-    document.getElementsByTagName("head")[0].appendChild(ms);
-
-    </script>
+	<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
-    <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-
-    <script>
-    window.jQuery || document.write("<script src='js/jquery.min.js'>\x3C/script>")
-    </script>
+	<script>
+		window.jQuery || document.write("<script async src='js/jquery.min.js'>\x3C/script>")
+	</script>
 
 
 
-    <script src="js/vendor.min.js" defer></script>
-    <script src="js/main.min.js" defer></script>
+	<script src="js/vendor.min.js" defer></script>
+	<script src="js/main.min.js" defer></script>
 
 
 
-    <!-- here Яндекс метрика -->
-    <!-- here Google Analitics -->
+	<!-- here Яндекс метрика -->
+	<!-- here Google Analitics -->
 
 </body>
 
 </html>
+
