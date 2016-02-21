@@ -21,6 +21,7 @@ var pngquant = require('imagemin-pngquant');
 var sitemap = require('gulp-sitemap');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
+var babel = require("gulp-babel");
 /* for use sprites
  var spritesmith = require('gulp.spritesmith');
 
@@ -50,7 +51,7 @@ var merge = require('merge-stream');
     },
     watch: {
         html: './app/**/*.html',
-        js: './app/js/**/*.js',
+        js: './app/js/src/**/*.js',
         scss: './app/sass/**/*.scss',
         img: './app/images/**/*.*',
         fonts: './app/fonts/**/*.*'
@@ -70,12 +71,25 @@ var AUTOPREFIXER_BROWSERS = [
 'bb >= 10'
 ];
 
+// Clean output directory
+gulp.task('clean', del.bind(null, ['dist/**'], {dot: true}));
 
-// Lint JavaScript
-gulp.task('jshint', function () {
+//delete main.min.js
+gulp.task('del:main.min.js', del.bind(null, [path.app.js + 'main.min.js']))
+
+
+//Babel => concat user JavaScript files to main.min.js
+gulp.task('babel', ['del:main.min.js'], function(){
     return gulp.src(path.watch.js)
+    .pipe(plumber())
+    .pipe(babel({
+        presets: ['es2015'] 
+    }))
     .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint.reporter('default'))    
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(path.app.js));
 });
 
 
@@ -84,10 +98,10 @@ gulp.task('images', function () {
     return gulp.src(path.app.img)
     .pipe(plumber())
     .pipe(cache(imagemin({
-       progressive: true,
-       interlaced: true,
-       use: [pngquant()]
-   })))
+     progressive: true,
+     interlaced: true,
+     use: [pngquant()]
+ })))
     .pipe(gulp.dest(path.dist.img))
     .pipe(size({title: 'images'}));
 });
@@ -108,9 +122,9 @@ gulp.task('jquery', function () {
 });
 
 
-//concat js files => error concat&minify in task 'html'
+//concat JavaScript files to vendor.min.js
 gulp.task('concat-js', function () {
-    var jsVendor = gulp.src([
+    return  gulp.src([
         path.app.bower + 'bootstrap/dist/js/bootstrap.js',
         path.app.bower + 'wow/dist/wow.js',
         path.app.bower + 'waypoints/lib/jquery.waypoints.js',
@@ -120,18 +134,8 @@ gulp.task('concat-js', function () {
         ])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(path.app.js));
-
-
-    var jsMain = gulp.src([
-        path.app.js + 'main.js'
-        ])
-    .pipe(concat('main.min.js'))
-    .pipe(uglify())
     .pipe(gulp.dest(path.app.js))
     .pipe(size({title: 'concat-js'}));
-
-    return merge(jsVendor, jsMain);
 
 });
 
@@ -208,8 +212,7 @@ gulp.task('html', function () {
 
 
 
-// Clean output directory
-gulp.task('clean', del.bind(null, ['dist/**'], {dot: true}));
+
 
 //Compile and automatically prefix styleheets
 gulp.task('sass', function () {
@@ -240,7 +243,21 @@ gulp.task('watch', function () {
 
     gulp.watch(path.watch.scss, ['css-watch']);
     gulp.watch(path.watch.html).on('change', browserSync.reload);
-    gulp.watch(path.watch.js, ['jshint']).on('change', browserSync.reload);
+    gulp.watch(path.watch.js,  function(){
+        return gulp.src(path.watch.js)
+        .pipe(plumber())
+        .pipe(babel({
+            presets: ['es2015'] 
+        }))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('main.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.app.js))
+        .pipe(size({title: 'create main.min.js'}));
+      
+    }).on('change', browserSync.reload);
+
 });
 
 //browser-sync
@@ -254,13 +271,13 @@ gulp.task('browser-sync', function () {
 
 //можно использовать gulp.series и gulp.parallel
 gulp.task('default', function (callback) {
-    runSequence('sass', 'concat-css', 'concat-js', 'browser-sync', 'watch', callback)
+    runSequence('sass', 'concat-css', 'babel', 'concat-js', 'browser-sync', 'watch', callback)
 });
 
 //build production files
 gulp.task('build', function (callback) {
     runSequence('clean',
-        'sass', 'concat-css', 'concat-js', ['images', 'copy', 'fonts', 'jquery'],
+        'sass', 'concat-css', 'babel', 'concat-js', ['images', 'copy', 'fonts', 'jquery'],
         'html',
         'sitemap',
         callback);
