@@ -92,16 +92,32 @@ gulp.task('babel', ['del:main.min.js'], function(){
     .pipe(gulp.dest(path.app.js));
 });
 
+//===============================================
+gulp.task('convert', function(){
+    return gulp.src(path.app.js + 'src/babel.js')
+    .pipe(plumber())
+    .pipe(babel({
+        presets: ['es2015'] 
+    }))
+    .pipe(concat('convert.js'))
+    .pipe(gulp.dest(path.app.js));
+});
+
+gulp.task('convert:watch', function(){
+    gulp.watch(path.app.js + 'src/babel.js', ['convert']);
+});
+//===============================================
+
 
 //copy img files and optimize images
 gulp.task('images', function () {
     return gulp.src(path.app.img)
     .pipe(plumber())
     .pipe(cache(imagemin({
-     progressive: true,
-     interlaced: true,
-     use: [pngquant()]
- })))
+       progressive: true,
+       interlaced: true,
+       use: [pngquant()]
+   })))
     .pipe(gulp.dest(path.dist.img))
     .pipe(size({title: 'images'}));
 });
@@ -255,7 +271,7 @@ gulp.task('watch', function () {
         .pipe(uglify())
         .pipe(gulp.dest(path.app.js))
         .pipe(size({title: 'create main.min.js'}));
-      
+
     }).on('change', browserSync.reload);
 
 });
