@@ -10,15 +10,15 @@
     "tests"
   ],
   "dependencies": {
-    "compass-breakpoint": "~2.6.1",
+    "compass-breakpoint": "~2.7.0",
     "reset-css": "~2.0.2011012602",
     "bootstrap": "~3.3.5",
-    "animate.css": "~3.4.0",
+    "animate.css": "~3.5.1",
     "wow": "~1.1.2",
     "waypoints": "~4.0.0",
-    "magnific-popup": "~1.0.0",
+    "magnific-popup": "~1.1.0",
     "owl.carousel": "owl-carousel2#~2.0.0-beta.3",
     "susy": "^2.2.12",
-    "loadcss": "^0.2.4"
+    "loadcss": "^1.2.0"
   }
 }
