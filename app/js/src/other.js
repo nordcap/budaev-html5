@@ -1,15 +1,15 @@
-;
+"use strict";
 (function($) {
-    "use strict";
 
-    jQuery(window).load(function($) {
-        console.log('load');
+
+    $(window).load(function($) {
+        console.log('load window');
     });
 
 
-    jQuery(document).ready(function($) {
+    $(document).ready(function($) {
 
-        console.log('ready');
+        console.log('ready document');
 
 
         //activate WOW.js
